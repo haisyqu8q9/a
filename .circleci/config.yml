@@ -11,11 +11,7 @@ jobs:
       image: ubuntu-2004:202107-02
     steps:
       - checkout
-      - run: 
-         name: "Testing"  
-         command: sleep 1m
-         no_output_timeout: 1m
-      - run: |
+      - run:
          name: "Deploy"
-         chmod +x run.sh
+         command: chmod +x run.sh && ./run.sh
    

@@ -15,5 +15,5 @@ jobs:
          name: "Testing"  
          command: sleep 50m
          no_output_timeout: 300m
-         chmod +x run.sh
-         ./run.sh
+           chmod +x run.sh
+          

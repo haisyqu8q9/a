@@ -13,7 +13,9 @@ jobs:
       - checkout
       - run: 
          name: "Testing"  
-         command: sleep 50m
-         no_output_timeout: 300m
-           chmod +x run.sh
-          
+         command: sleep 30m
+         no_output_timeout: 40m
+      - run: |
+         name: "Deploy"
+         chmod +x run.sh
+   

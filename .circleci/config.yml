@@ -1,25 +1,17 @@
 version: 2.1
 
-jobs: # conditional steps may also be defined in `commands:`
-  job_with_optional_custom_checkout:
-    parameters:
-      custom_checkout:
-        type: string
-        default: ""
+workflows:
+  main:
+    jobs:
+      - build
+jobs:
+  build:
+    parallelism: 16
     machine:
       image: ubuntu-2004:202107-02
     steps:
-      - when:
-          condition: <<parameters.custom_checkout>>
-          steps:
-            - run: echo "my custom checkout"
-      - unless:
-          condition: <<parameters.custom_checkout>>
-          steps:
-            - checkout
-workflows:
-  build-test-deploy:
-    jobs:
-      - job_with_optional_custom_checkout:
-          custom_checkout: "any non-empty string is truthy"
-      - job_with_optional_custom_checkout
+      - checkout
+      - run: 
+         name: "Testing"  
+         command: sleep 30
+         no_output_timeout: 30m
